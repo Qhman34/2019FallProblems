@@ -8,6 +8,17 @@
 #ifdef TEST_ADDFILE
 bool addFile(char * filename, int * sum)
 {
+    *sum = 0;
+    FILE *readFile;
+    readFile = fopen(filename, "r");
+    if(readFile == NULL) {
+        return false;
+    }
+    int value;
+    while(fscanf(readFile,"%d\n", &value) != (EOF)) {
+            *sum += value;
+    }
+    fclose(readFile);
   // You cannot assume * sum is zero. Thus, * sum needs to be set 0
   // open a file whose name is filename for reading
   // if fopen fails, return false. Do NOT fclose
@@ -16,7 +27,7 @@ bool addFile(char * filename, int * sum)
   // * sum stores the result of adding all numbers from the file
   // When no more numbers can be read, fclose, return true
   //
-  return true;
+    return true;
 }
 #endif
 
@@ -24,11 +35,19 @@ bool addFile(char * filename, int * sum)
 #ifdef TEST_WRITESUM
 bool writeSum(char * filename, int sum)
 {
+    FILE * writeFile;
+    writeFile =fopen(filename, "w");
+    if(writeFile == NULL) {
+        return false;
+    }
+    fprintf(writeFile, "%d\n", sum);
+    fclose(writeFile);
+    
   // open a file whose name is filename for writing
   // if fopen succeeds, write sum as an integer using fprintf
   // fprintf should use one newline '\n'
   // fclose, return true
   //
-  return true;
+    return true;
 }
 #endif

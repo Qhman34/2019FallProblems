@@ -36,7 +36,7 @@ void eliminate(int n, int k)
 			  index = (index + 1) % (n);
 		  } else if( count == k) {
 			  arr[index] = -1;
-			  printf("%d\n", index);
+			  fprintf(stdout, "%d\n", index);
 			  index = (index + 1) % (n);
 			  count++;
 		  } else {
@@ -48,7 +48,7 @@ void eliminate(int n, int k)
   // print the last one
   for(index = 0; index < n; index++) {
 	  if(arr[index] != -1) {
-		  printf("%d\n", index);
+		  fprintf(stdout, "%d\n", index);
 		  index = n;
 	  }
   }
